@@ -1,0 +1,67 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ocha-simple-ingress
+  namespace: ocha-ingress-demo
+  annotations:
+    oci-native-ingress.oraclecloud.com/healthcheck-port: "80"
+spec:
+  ingressClassName: native-ic-ingress-class
+  rules:
+    - host: "ingress.ochacafe.jp"
+      http:
+        paths:
+          - path: /ocha
+            pathType: Prefix
+            backend:
+              service:
+                name: ocha
+                port:
+                  number: 80
+          - path: /cafe
+            pathType: Prefix
+            backend:
+              service:
+                name: ocha
+                port:
+                  number: 80
+  defaultBackend:
+    service:
+      name: ocha
+      port:
+        number: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocha
+  namespace: ocha-ingress-demo
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    app: ocha
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocha
+  namespace: ocha-ingress-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ocha
+  template:
+    metadata:
+      labels:
+        app: ocha
+    spec:
+      containers:
+        - name: ocha
+          image: nrt.ocir.io/orasejapan/ocha-traffic-routing
+          ports:
+            - containerPort: 80

@@ -1,0 +1,71 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: ocha-gateway-demo
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-ocha
+spec:
+  gatewayClassName: nginx
+  listeners:
+    - name: http
+      hostname: gateway.ochacafe.jp
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: https
+      hostname: gateway.ochacafe.jp
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: cafe-secret
+            namespace: ocha-gateway-demo
+            kind: Secret
+            group: ""
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: ocha
+  namespace: ocha-gateway-demo
+spec:
+  hostnames:
+    - gateway.ochacafe.jp
+  parentRefs:
+    - name: gateway
+      sectionName: https
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /ocha
+      backendRefs:
+        - name: cafe
+          port: 8080
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: cafe
+  namespace: ocha-gateway-demo
+spec:
+  hostnames:
+    - gateway.ochacafe.jp
+  parentRefs:
+    - name: gateway
+      sectionName: https
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /cafe
+      backendRefs:
+        - name: cafe
+          port: 8080

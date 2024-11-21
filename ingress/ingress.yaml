@@ -1,0 +1,28 @@
+apiVersion: "ingress.oraclecloud.com/v1beta1"
+kind: IngressClassParameters
+metadata:
+  name: native-ic-params
+  namespace: ocha-ingress-demo
+spec:
+  compartmentId: "ocid1.compartment.oc1..aaaaaaaaw4afdnptbjyff7ojizz2jflyzgunm3ivkwfmlvfoscnamvmrzgdq"
+  subnetId: "ocid1.subnet.oc1.ap-tokyo-1.aaaaaaaabftxncd5nikyglwpc4khsvk7vihj5un4j3eaey7xmk5fqcxomfea"
+  loadBalancerName: "native-ic-lb"
+  isPrivate: false
+  maxBandwidthMbps: 10
+  minBandwidthMbps: 10
+---
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: native-ic-ingress-class
+  namespace: ocha-ingress-demo
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  controller: oci.oraclecloud.com/native-ingress-controller
+  parameters:
+    scope: Namespace
+    namespace: ocha-ingress-demo
+    apiGroup: ingress.oraclecloud.com
+    kind: ingressclassparameters
+    name: native-ic-params

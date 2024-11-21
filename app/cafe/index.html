@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Cloud Hangout Cafe - 開発者のための技術コミュニティ</title>
+    <style>
+        :root {
+            --coffee-dark: #3C2A21;
+            --coffee-medium: #6B4F4F;
+            --coffee-light: #EDE4E0;
+            --accent: #C7B7A3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background-color: var(--coffee-light);
+            color: var(--coffee-dark);
+        }
+
+        header {
+            background-color: var(--coffee-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,50 C30,30 70,30 70,50 C70,65 55,75 50,75 C45,75 30,65 30,50 Z' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2'/%3E%3C/svg%3E");
+        }
+
+        .hero {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: var(--coffee-dark);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--coffee-light);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .next-event {
+            background-color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .event-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--coffee-light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .topics {
+            padding: 3rem 2rem;
+            background-color: var(--accent);
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .topic-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #D27548;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #B85C35;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--coffee-dark);
+        }
+
+        footer {
+            background-color: var(--coffee-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .steam {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .steam::before {
+            content: "☕";
+            font-size: 3rem;
+            color: var(--coffee-light);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="hero">
+            <div class="steam"></div>
+            <h1>Oracle Cloud Hangout Cafe Season9</h1>
+            <p>開発者・エンジニアのための温かいテクニカルコミュニティ</p>
+            <a href="https://ochacafe.connpass.com/" class="cta-button">参加申し込み</a>
+        </div>
+    </header>
+
+    <section class="next-event">
+        <h2 class="section-title">次回開催</h2>
+        <div class="event-card">
+            <h3>Kotlin入門</h3>
+            <p>日時：2024年1月15日（水）19:00〜</p>
+            <p>場所：Zoom & 東京会場</p>
+            <p style="margin: 1rem 0;">Kotlinについて取り扱います!!
+            </p>
+            <a href="https://connpass.com/event/333248" class="cta-button">イベントに参加する</a>
+        </div>
+    </section>
+
+    <section class="topics">
+        <h2 class="section-title">今後のテーマ</h2>
+        <div class="topic-grid">
+            <div class="topic-card">
+                <h3>実践! OpenTelemetry</h3>
+                <p>2025年2月</p>
+                <p>Keyword: OpenTelemetry</p>
+            </div>
+            <div class="topic-card">
+                <h3>開発者のためのFinOps</h3>
+                <p>2025年3月</p>
+                <p>Keyword: FinOps,Open Cost and Usage Specification (FOCUS)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>OCHa Cafe - クラウドネイティブな時代に必要なテクノロジーを、一緒に学びませんか？</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://thinkit.co.jp/series/11131" style="color: var(--coffee-light);">OCHa Cafe ダイジェスト</a>
+        </p>
+    </footer>
+</body>
+
+</html>
