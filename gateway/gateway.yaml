@@ -4,7 +4,7 @@ metadata:
   name: gateway
   namespace: ocha-gateway-demo
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-ocha
+    cert-manager.io/issuer: letsencrypt-gw
 spec:
   gatewayClassName: nginx
   listeners:
@@ -25,7 +25,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: cafe-secret
+          - name: gw-secret
             namespace: ocha-gateway-demo
             kind: Secret
             group: ""

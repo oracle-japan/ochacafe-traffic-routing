@@ -1,12 +1,13 @@
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
-  name: letsencrypt-ocha
+  name: letsencrypt-gw
+  namespace: ocha-gateway-demo
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: ocha-issuer-key
+      name: gw-issuer-key
     solvers:
       - http01:
           gatewayHTTPRoute:

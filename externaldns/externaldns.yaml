@@ -85,4 +85,4 @@ spec:
             - --txt-owner-id=my-identifier
             - --oci-zone-scope=
             - --oci-auth-instance-principal
-            - --oci-compartment-ocid=ocid1.compartment.oc1..aaaaaaaaw4afdnptbjyff7ojizz2jflyzgunm3ivkwfmlvfoscnamvmrzgdq
+            - --oci-compartment-ocid=ocid1.compartment.oc1..aaaaaaaaw4axxxxxxxxxxxz2jflyzgunm3ivkwfmlvfoscnamvmrzgdq

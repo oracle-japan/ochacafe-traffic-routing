@@ -4,8 +4,8 @@ metadata:
   name: native-ic-params
   namespace: ocha-ingress-demo
 spec:
-  compartmentId: "ocid1.compartment.oc1..aaaaaaaaw4afdnptbjyff7ojizz2jflyzgunm3ivkwfmlvfoscnamvmrzgdq"
-  subnetId: "ocid1.subnet.oc1.ap-tokyo-1.aaaaaaaabftxncd5nikyglwpc4khsvk7vihj5un4j3eaey7xmk5fqcxomfea"
+  compartmentId: "ocid1.compartment.oc1..aaaaaaaaw4afdnptbxxxxxxxxxwfmlvfoscnamvmrzgdq"
+  subnetId: "ocid1.subnet.oc1.ap-tokyo-1.aaaaaaaabftxxxxxxxxxxxx4j3eaey7xmk5fqcxomfea"
   loadBalancerName: "native-ic-lb"
   isPrivate: false
   maxBandwidthMbps: 10
